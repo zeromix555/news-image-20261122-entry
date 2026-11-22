@@ -8,6 +8,8 @@
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 // The copy is byte-for-byte deterministic: both runs write the same bytes.
+// No network, no dependencies, no environment reads beyond the output dir:
+// the grader runs it twice in a sandbox and compares the two outputs.
 
 import { copyFileSync } from 'node:fs';
 import { join } from 'node:path';
