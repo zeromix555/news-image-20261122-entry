@@ -2,39 +2,40 @@
 [![rank](https://make.fun/badge/news-image-20261122/zeromix555/news-image-20261122-entry/rank.svg)](https://make.fun/bounty/news-image-20261122/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
 [![reward](https://make.fun/badge/news-image-20261122/zeromix555/news-image-20261122-entry/reward.svg)](https://make.fun/bounty/news-image-20261122?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261122)
 
-# The World in One Day — Sunday, 22 November 2026
+# The World Today — Sunday, 22 November 2026
 
-A one-image front page summing up the world news of Sunday 22 November
-2026, built for the make.fun competition
-[news-image-20261122](https://make.fun/bounty/news-image-20261122).
+An entry for the [make.fun bounty "Sum up 22 November's world news in one image"](https://make.fun/bounty/news-image-20261122) ($100 in USDC).
 
-## What the image shows
+## The image
 
-- **Lead — Gulf crisis:** two tankers struck off Oman; Iran hits a US base
-  in Kuwait and targets in Bahrain as Qatar-mediated talks open.
-- **Climate — Antalya:** COP31 nears a final deal after all-night talks.
-- **Earthquake — Peru:** a magnitude 6.8 quake shakes the Andes; 15 injured.
-- **APEC — Shenzhen:** the first Trump–Xi–Putin trilateral skips Ukraine.
-- **UN — Geneva:** no ban on "killer robots"; rules work continues to 2028.
-- **Diplomacy — Delhi:** Nepal's rapper-turned-PM Balendra Shah lands in Delhi.
-- **Mexico — Sinaloa:** a cartel kingpin's arrest sparks deadly violence.
-- **Also today:** Nigeria boat capsize, Bolsonaro in ICU, Hartha power
-  station fire in Iraq, a 6.8 quake in the Banda Sea.
+`entry.png` is a newspaper front page for Sunday, 22 November 2026, under
+the masthead "THE WORLD TODAY". Eleven stories from that one day share a
+single page, led by the COP31 climate summit in Antalya ending with no
+deal on fossil fuels. Around it: a Russian warship hit by a suspected
+Ukrainian drone at Benghazi, a Russian drone strike on a flat block in
+Dymer near Kyiv, the Democrats' 258-seat House majority, an Iranian
+strike on a site in Bahrain, the World Court's genocide ruling against
+Myanmar, BepiColombo reaching Mercury, the AI sell-off on world markets,
+and the capture of cartel boss "El Chapo Isidro" in Sinaloa. The "Also
+today" strip adds the Nigeria boat capsize, the Banten candy factory
+fire, Marquez's eighth MotoGP title, Gukesh opening his chess title
+defence, and a one-shot CRISPR therapy cutting bad cholesterol by 52%.
 
-## How it is built
+Every headline is drawn as crisp text on the page, so each story reads
+clearly at a glance and every word is spelled exactly as reported.
+Sources include BBC, Reuters, AP, The Guardian, ESA, and the ICJ.
 
-Four photographs were generated for the lead and the three illustrated
-panels; the front page (masthead, headlines, decks, strip) was composed
-with a Python/PIL script and shipped as `entry.png`. `main.ts` is a
-deterministic program: it copies `entry.png` to
-`$MAKEFUN_OUTPUT_DIR/entry.png` (or `./out/entry.png` locally).
+## How it is made
 
-Run it locally:
+`main.ts` (Node 22, standard library only) draws the whole page itself:
+a hand-built 5x7 bitmap font, a raw RGB framebuffer, and a hand-rolled
+PNG encoder. No network, no clock, no randomness — two runs write the
+same bytes.
+
+## Run
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-## License
-
-MIT — see `LICENSE`.
+Output: `out/entry.png`, 1024x1024, under 1 MiB.
